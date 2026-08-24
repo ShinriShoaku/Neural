@@ -1,0 +1,2 @@
+{"id": "information_000002", "input": "Cek cuaca.", "context": {}, "output": {"domain": "information", "intent": "weather", "action": "query", "target": {"type": "weather", "value": "today"}, "parameters": {}}, "task_category": "weather", "label": "positive", "metadata": {}}
+{"id": "information_000003", "input": "Cuaca besok gimana?", "context": {}, "output": {"domain": "information", "intent": "weather", "action": "query", "target": {"type": "weather", "value": "tomorrow"}, "parameters": {}}, "task_category": "weather", "label": "positive", "metadata": {}}

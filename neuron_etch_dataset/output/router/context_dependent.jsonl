@@ -1,0 +1,2 @@
+{"id": "router_000031", "input": "Ulang lagi dong.", "segments": [{"text": "Ulang lagi dong.", "domain": "media"}], "task_category": "context_dependent", "metadata": {"difficulty": "medium", "note": "perlu last_domain=media & last_action=play dari router_context (§6)"}}
+{"id": "router_000032", "input": "Yang itu aja deh, jangan yang tadi.", "segments": [{"text": "Yang itu aja deh, jangan yang tadi.", "domain": "unknown"}], "task_category": "context_dependent", "metadata": {"difficulty": "medium", "note": "butuh 2 turn context sebelumnya untuk resolve"}}

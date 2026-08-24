@@ -1,0 +1,1 @@
+{"id": "information_000010", "input": "Cari itu deh.", "context": {}, "output": {"domain": "information", "intent": "search", "action": "search", "target": {"type": "web", "value": null}, "parameters": {}}, "task_category": "ambiguous", "label": "ambiguous", "metadata": {"note": "objek pencarian tidak jelas tanpa context"}}

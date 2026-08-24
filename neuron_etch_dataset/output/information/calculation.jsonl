@@ -1,0 +1,1 @@
+{"id": "information_000007", "input": "Berapa hasil 12 kali 8?", "context": {}, "output": {"domain": "information", "intent": "calculation", "action": "calculate", "target": null, "parameters": {"expression": "12 * 8"}}, "task_category": "calculation", "label": "positive", "metadata": {}}

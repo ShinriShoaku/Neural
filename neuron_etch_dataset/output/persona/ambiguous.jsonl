@@ -1,0 +1,1 @@
+{"id": "persona_000013", "input": "Suruh dia jelasin.", "context": {}, "output": {"domain": "persona", "intent": "conversation", "action": "explain", "target": {"type": "persona", "value": null}, "parameters": {}}, "task_category": "ambiguous", "label": "ambiguous", "metadata": {"note": "referent persona tidak jelas tanpa context"}}

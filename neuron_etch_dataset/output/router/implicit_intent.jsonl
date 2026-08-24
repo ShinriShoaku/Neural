@@ -1,0 +1,2 @@
+{"id": "router_000029", "input": "Berisik banget suaranya.", "segments": [{"text": "Berisik banget suaranya.", "domain": "system"}], "task_category": "implicit_intent", "metadata": {"difficulty": "medium", "note": "implicit: minta volume diturunkan/mute, bukan sekadar keluhan"}}
+{"id": "router_000030", "input": "Laptop udah lowbat nih.", "segments": [{"text": "Laptop udah lowbat nih.", "domain": "system"}], "task_category": "implicit_intent", "metadata": {"difficulty": "medium", "note": "implicit: minta cek status baterai (system_query), bukan cuma statement"}}

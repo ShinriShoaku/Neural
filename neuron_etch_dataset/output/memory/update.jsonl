@@ -1,0 +1,1 @@
+{"id": "memory_000004", "input": "Update, sekarang aku lebih suka kopi susu.", "context": {}, "output": {"domain": "memory", "intent": "memory_update", "action": "update", "target": null, "parameters": {"category": "preference", "content": "User now prefers milk coffee"}}, "task_category": "update", "label": "positive", "metadata": {}}

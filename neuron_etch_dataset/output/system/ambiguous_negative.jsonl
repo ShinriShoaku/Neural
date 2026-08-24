@@ -1,0 +1,3 @@
+{"id": "system_000073", "input": "Halo, apa kabar?", "context": {}, "output": null, "task_category": "ambiguous_negative", "label": "negative", "metadata": {"difficulty": "easy", "note": "bukan domain system"}}
+{"id": "system_000074", "input": "Ceritain dongeng singkat.", "context": {}, "output": null, "task_category": "ambiguous_negative", "label": "negative", "metadata": {"difficulty": "easy", "note": "bukan domain system"}}
+{"id": "system_000075", "input": "Berapa hasil 12 x 8?", "context": {}, "output": null, "task_category": "ambiguous_negative", "label": "negative", "metadata": {"difficulty": "easy", "note": "bukan domain system"}}

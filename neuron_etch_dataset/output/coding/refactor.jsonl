@@ -1,0 +1,1 @@
+{"id": "coding_000010", "input": "Refactor function ini biar lebih rapi.", "context": {}, "output": {"domain": "coding", "intent": "refactoring", "action": "refactor", "target": null, "parameters": {}}, "task_category": "refactor", "label": "positive", "metadata": {}}

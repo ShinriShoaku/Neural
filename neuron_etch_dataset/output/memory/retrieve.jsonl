@@ -1,0 +1,1 @@
+{"id": "memory_000003", "input": "Kamu masih inget nama kucingku?", "context": {}, "output": {"domain": "memory", "intent": "memory_retrieve", "action": "retrieve", "target": null, "parameters": {"category": "identity", "query": "nama kucing"}}, "task_category": "retrieve", "label": "positive", "metadata": {}}

@@ -1,0 +1,1 @@
+{"id": "information_000009", "input": "Apa itu fotosintesis?", "context": {}, "output": {"domain": "information", "intent": "information_query", "action": "query", "target": {"type": "knowledge", "value": "fotosintesis"}, "parameters": {}}, "task_category": "knowledge", "label": "positive", "metadata": {}}

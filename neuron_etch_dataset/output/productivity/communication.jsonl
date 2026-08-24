@@ -1,0 +1,1 @@
+{"id": "productivity_000007", "input": "Balas pesan ini dengan 'oke siap'.", "context": {}, "output": {"domain": "productivity", "intent": "communication", "action": "send", "target": {"type": "message", "value": "oke siap"}, "parameters": {}}, "task_category": "communication", "label": "positive", "metadata": {"note": "§3 — komunikasi sederhana masuk productivity"}}

@@ -1,0 +1,1 @@
+{"id": "persona_000009", "input": "Aria, jadi jadi asisten pribadi aku ya.", "context": {}, "output": {"domain": "persona", "intent": "roleplay", "action": "roleplay", "target": {"type": "persona", "value": "aria"}, "parameters": {"role": "asisten pribadi"}}, "task_category": "roleplay_intent", "label": "positive", "metadata": {}}

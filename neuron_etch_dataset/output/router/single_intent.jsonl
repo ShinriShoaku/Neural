@@ -1,0 +1,17 @@
+{"id": "router_000001", "input": "Buka foot", "segments": [{"text": "Buka foot", "domain": "system"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000002", "input": "Matiin discord", "segments": [{"text": "Matiin discord", "domain": "system"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000003", "input": "Restart komputer", "segments": [{"text": "Restart komputer", "domain": "system"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000004", "input": "Cek penggunaan RAM", "segments": [{"text": "Cek penggunaan RAM", "domain": "system"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000005", "input": "Putar lagu Noah", "segments": [{"text": "Putar lagu Noah", "domain": "media"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000006", "input": "Pause musiknya", "segments": [{"text": "Pause musiknya", "domain": "media"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000007", "input": "Skip ke lagu berikutnya", "segments": [{"text": "Skip ke lagu berikutnya", "domain": "media"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000008", "input": "Panggil Mailin buat ngobrol", "segments": [{"text": "Panggil Mailin buat ngobrol", "domain": "persona"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000009", "input": "Ganti karakter ke Aria", "segments": [{"text": "Ganti karakter ke Aria", "domain": "persona"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000010", "input": "Bikinin fungsi python buat sorting", "segments": [{"text": "Bikinin fungsi python buat sorting", "domain": "coding"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000011", "input": "Cek bug di file main.py", "segments": [{"text": "Cek bug di file main.py", "domain": "coding"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000012", "input": "Cuaca hari ini gimana?", "segments": [{"text": "Cuaca hari ini gimana?", "domain": "information"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000013", "input": "Cari tahu ibu kota Prancis", "segments": [{"text": "Cari tahu ibu kota Prancis", "domain": "information"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000014", "input": "Inget-inget kalau aku suka kopi hitam", "segments": [{"text": "Inget-inget kalau aku suka kopi hitam", "domain": "memory"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000015", "input": "Kamu masih inget nama kucingku?", "segments": [{"text": "Kamu masih inget nama kucingku?", "domain": "memory"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000016", "input": "Ingetin aku meeting jam 3 sore", "segments": [{"text": "Ingetin aku meeting jam 3 sore", "domain": "productivity"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}
+{"id": "router_000017", "input": "Tambahin todo beli galon", "segments": [{"text": "Tambahin todo beli galon", "domain": "productivity"}], "task_category": "single_intent", "metadata": {"difficulty": "easy"}}

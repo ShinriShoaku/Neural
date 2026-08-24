@@ -1,0 +1,1 @@
+{"id": "memory_000005", "input": "Lupain soal preferensi musik aku ya.", "context": {}, "output": {"domain": "memory", "intent": "memory_delete", "action": "forget", "target": null, "parameters": {"category": "preference"}}, "task_category": "forget", "label": "positive", "metadata": {}}

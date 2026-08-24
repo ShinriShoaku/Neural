@@ -1,0 +1,1 @@
+{"id": "information_000001", "input": "Cari tahu ibu kota Prancis.", "context": {}, "output": {"domain": "information", "intent": "search", "action": "search", "target": {"type": "web", "value": "ibu kota Prancis"}, "parameters": {}}, "task_category": "search", "label": "positive", "metadata": {}}

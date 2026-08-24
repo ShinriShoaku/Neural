@@ -1,0 +1,1 @@
+{"id": "information_000005", "input": "Artiin 'good morning' ke bahasa Indonesia.", "context": {}, "output": {"domain": "information", "intent": "translation", "action": "translate", "target": null, "parameters": {"text": "good morning", "target_language": "id"}}, "task_category": "translation", "label": "positive", "metadata": {}}

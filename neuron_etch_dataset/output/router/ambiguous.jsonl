@@ -1,0 +1,2 @@
+{"id": "router_000027", "input": "Matiin itu.", "segments": [{"text": "Matiin itu.", "domain": "unknown"}], "task_category": "ambiguous", "metadata": {"difficulty": "medium", "note": "referent 'itu' tidak jelas: media, system, atau notification?"}}
+{"id": "router_000028", "input": "Yang tadi aja.", "segments": [{"text": "Yang tadi aja.", "domain": "unknown"}], "task_category": "ambiguous", "metadata": {"difficulty": "medium", "note": "butuh context sebelumnya, tanpa itu domain tidak bisa dipastikan"}}

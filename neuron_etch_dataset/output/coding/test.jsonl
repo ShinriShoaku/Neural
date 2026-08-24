@@ -1,0 +1,1 @@
+{"id": "coding_000012", "input": "Bikinin unit test buat fungsi ini.", "context": {}, "output": {"domain": "coding", "intent": "testing", "action": "test", "target": null, "parameters": {}}, "task_category": "test", "label": "positive", "metadata": {}}

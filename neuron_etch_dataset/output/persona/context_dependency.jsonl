@@ -1,0 +1,1 @@
+{"id": "persona_000012", "input": "Tanya dia lagi soal itu.", "context": {}, "output": {"domain": "persona", "intent": "conversation", "action": "ask", "target": {"type": "persona", "value": null}, "parameters": {}}, "task_category": "context_dependency", "label": "ambiguous", "metadata": {"note": "butuh router_context: siapa 'dia', apa 'itu'"}}

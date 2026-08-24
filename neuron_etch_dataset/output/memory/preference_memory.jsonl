@@ -1,0 +1,1 @@
+{"id": "memory_000008", "input": "Aku nggak suka pedas, tolong diinget.", "context": {}, "output": {"domain": "memory", "intent": "memory_store", "action": "remember", "target": null, "parameters": {"category": "preference", "content": "User dislikes spicy food"}}, "task_category": "preference_memory", "label": "positive", "metadata": {}}

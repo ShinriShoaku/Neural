@@ -1,0 +1,1 @@
+{"id": "information_000006", "input": "Siapa presiden Indonesia sekarang?", "context": {}, "output": {"domain": "information", "intent": "lookup", "action": "lookup", "target": {"type": "entity", "value": "presiden Indonesia"}, "parameters": {}}, "task_category": "lookup", "label": "positive", "metadata": {}}

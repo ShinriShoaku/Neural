@@ -1,0 +1,17 @@
+torch>=2.2.0
+transformers>=4.46.0
+peft>=0.13.0
+trl>=0.12.0
+accelerate>=0.34.0
+datasets>=2.20.0
+huggingface_hub>=0.25.0
+bitsandbytes>=0.43.0 ; platform_system == "Linux"
+sentencepiece
+safetensors
+
+# Unsloth (opsional, buat train_lora_unsloth.py) SENGAJA TIDAK ditaruh di
+# sini — command install-nya beda-beda tergantung versi CUDA/OS, jadi
+# instalasi manual sesuai instruksi resmi:
+#   pip install unsloth
+#   (atau lihat https://github.com/unslothai/unsloth#installation kalau
+#    butuh versi CUDA spesifik)

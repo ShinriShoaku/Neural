@@ -1,0 +1,1 @@
+{"id": "productivity_000001", "input": "Bikin event meeting besok jam 10.", "context": {}, "output": {"domain": "productivity", "intent": "calendar", "action": "create", "target": {"type": "event", "value": "meeting"}, "parameters": {"time": "besok 10:00"}}, "task_category": "calendar", "label": "positive", "metadata": {}}

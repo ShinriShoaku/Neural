@@ -1,0 +1,1 @@
+{"id": "memory_000007", "input": "Inget aku pernah cerita soal wawancara kerja minggu lalu.", "context": {}, "output": {"domain": "memory", "intent": "memory_store", "action": "remember", "target": null, "parameters": {"category": "event", "content": "job interview last week"}}, "task_category": "event_memory", "label": "positive", "metadata": {}}

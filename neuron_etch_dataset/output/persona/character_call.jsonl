@@ -1,0 +1,2 @@
+{"id": "persona_000001", "input": "Panggil Mailin.", "context": {}, "output": {"domain": "persona", "intent": "character_call", "action": "call", "target": {"type": "persona", "value": "mailin"}, "parameters": {}}, "task_category": "character_call", "label": "positive", "metadata": {}}
+{"id": "persona_000002", "input": "Panggilin Aria dong.", "context": {}, "output": {"domain": "persona", "intent": "character_call", "action": "call", "target": {"type": "persona", "value": "aria"}, "parameters": {}}, "task_category": "character_call", "label": "positive", "metadata": {}}

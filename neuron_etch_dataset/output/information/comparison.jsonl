@@ -1,0 +1,1 @@
+{"id": "information_000008", "input": "Lebih bagus mana, iPhone atau Samsung?", "context": {}, "output": {"domain": "information", "intent": "comparison", "action": "compare", "target": null, "parameters": {"items": ["iPhone", "Samsung"]}}, "task_category": "comparison", "label": "positive", "metadata": {}}

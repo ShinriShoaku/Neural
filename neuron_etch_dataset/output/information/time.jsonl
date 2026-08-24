@@ -1,0 +1,1 @@
+{"id": "information_000004", "input": "Jam berapa sekarang?", "context": {}, "output": {"domain": "information", "intent": "time", "action": "query", "target": {"type": "time", "value": "now"}, "parameters": {}}, "task_category": "time", "label": "positive", "metadata": {}}

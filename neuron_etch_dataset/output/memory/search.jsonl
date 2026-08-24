@@ -1,0 +1,1 @@
+{"id": "memory_000006", "input": "Cari memori soal rencana liburanku.", "context": {}, "output": {"domain": "memory", "intent": "memory_query", "action": "search", "target": null, "parameters": {"query": "rencana liburan"}}, "task_category": "search", "label": "positive", "metadata": {}}

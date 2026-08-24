@@ -1,0 +1,1 @@
+{"id": "coding_000011", "input": "Gimana cara desain sistem antrian buat aplikasi chat?", "context": {}, "output": {"domain": "coding", "intent": "architecture", "action": "design", "target": null, "parameters": {"requirements": "queue system design for chat app"}}, "task_category": "architecture", "label": "positive", "metadata": {}}

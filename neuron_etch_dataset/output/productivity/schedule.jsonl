@@ -1,0 +1,1 @@
+{"id": "productivity_000005", "input": "Jadwalin olahraga tiap pagi jam 6.", "context": {}, "output": {"domain": "productivity", "intent": "schedule", "action": "schedule", "target": {"type": "event", "value": "olahraga"}, "parameters": {"recurrence": "daily 06:00"}}, "task_category": "schedule", "label": "positive", "metadata": {}}

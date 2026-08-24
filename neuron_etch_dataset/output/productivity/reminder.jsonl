@@ -1,0 +1,1 @@
+{"id": "productivity_000002", "input": "Besok jam 8 ingatkan aku update project.", "context": {}, "output": {"domain": "productivity", "intent": "reminder", "action": "create", "target": {"type": "reminder", "value": null}, "parameters": {"time": "2026-08-23T08:00:00+07:00", "content": "update project"}}, "task_category": "reminder", "label": "positive", "metadata": {}}
