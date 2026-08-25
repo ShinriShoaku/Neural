@@ -137,8 +137,10 @@ def main() -> None:
         bf16=torch.cuda.is_bf16_supported(),
         fp16=not torch.cuda.is_bf16_supported(),
         report_to=[],
-        eval_strategy="steps" if "validation" in tokenized_ds else "no",
-        eval_steps=args.save_steps if "validation" in tokenized_ds else None,
+        #eval_strategy="steps" if "validation" in tokenized_ds else "no",
+        #eval_steps=args.save_steps if "validation" in tokenized_ds else None,
+        eval_strategy="no",       # Matikan evaluasi otomatis saat training
+        eval_steps=None,          # Hapus interval evaluasi
         seed=args.seed,
         remove_unused_columns=False,
         # gradient_checkpointing TIDAK diset di sini — sudah ditangani

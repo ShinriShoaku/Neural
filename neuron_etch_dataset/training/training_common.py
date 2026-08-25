@@ -30,6 +30,16 @@ def resolve_basename(adapter_name: str) -> str:
 # penjelasan lengkap kenapa ini dilakukan begini)
 # ---------------------------------------------------------------------------
 
+def _unwrap_ids(ids):
+    """Beberapa Processor multimodal (mis. Qwen3-VL) mengembalikan input_ids
+    dalam bentuk nested List[List[int]] walau input cuma 1 string, beda dari
+    AutoTokenizer biasa yang langsung List[int]. Fungsi ini menyeragamkan
+    keduanya jadi flat List[int]."""
+    if len(ids) > 0 and isinstance(ids[0], list):
+        return ids[0]
+    return ids
+
+
 def tokenize_example(tokenizer, messages: list[dict], max_seq_len: int) -> dict:
     prefix_messages = messages[:-1]  # system + user
     assistant_content = messages[-1]["content"]
@@ -37,10 +47,10 @@ def tokenize_example(tokenizer, messages: list[dict], max_seq_len: int) -> dict:
     prefix_text = tokenizer.apply_chat_template(
         prefix_messages, tokenize=False, add_generation_prompt=True, enable_thinking=False,
     )
-    prefix_ids = tokenizer(prefix_text, add_special_tokens=False)["input_ids"]
+    prefix_ids = _unwrap_ids(tokenizer(text=prefix_text, add_special_tokens=False)["input_ids"])
 
     target_text = assistant_content + "<|im_end|>\n"
-    target_ids = tokenizer(target_text, add_special_tokens=False)["input_ids"]
+    target_ids = _unwrap_ids(tokenizer(text=target_text, add_special_tokens=False)["input_ids"])
 
     input_ids = prefix_ids + target_ids
     labels = [-100] * len(prefix_ids) + target_ids
