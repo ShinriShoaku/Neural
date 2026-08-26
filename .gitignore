@@ -1,3 +1,5 @@
 models/
+training_data/
 unsloth_compiled_cache/
 router_dataset_full/
+adapters/

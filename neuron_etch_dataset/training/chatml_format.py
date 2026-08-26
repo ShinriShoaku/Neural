@@ -51,6 +51,142 @@ from capabilities import get_vocab_strings
 # ROUTER (§66.1)
 # ---------------------------------------------------------------------------
 
+ROUTER_SYSTEM_PROMPT_MINIMAL = """Kamu Router. Domain: system, media, persona, coding, information, memory, productivity, unknown.
+Pecah kalimat jadi beberapa segment kalau ada lebih dari 1 domain.
+Output JSON saja: {"segments": [{"domain": "...", "text": "..."}]}"""
+
+
+def build_router_messages_minimal(row: dict[str, Any]) -> list[dict[str, str]]:
+    """Versi prompt paling ringkas (~40 token, bukan ~376) -- fine-tuning
+    sendiri yang ngajarin format output & aturan overlap lewat contoh
+    berulang, jadi system prompt nggak perlu jelasin ulang semuanya."""
+    segments_out = [{"domain": seg["domain"], "text": seg["text"]} for seg in row["segments"]]
+    assistant_json = json.dumps({"segments": segments_out}, ensure_ascii=False)
+    return [
+        {"role": "system", "content": ROUTER_SYSTEM_PROMPT_MINIMAL},
+        {"role": "user", "content": row["input"]},
+        {"role": "assistant", "content": assistant_json},
+    ]
+
+
+ROUTER_STAGE1_PROMPT = """Tugasmu HANYA menganalisis tipe instruksi dari input user. Jangan jawab pertanyaannya.
+
+Pilih SALAH SATU kategori:
+- single_intent (1 perintah/topik jelas, langsung, walau kalimatnya panjang atau ada 2 aksi tapi masih 1 topik yang sama)
+- multi_intent (lebih dari 1 topik/domain BERBEDA, biasanya dipisah kata "terus", "lalu", "dan", "habis itu")
+- implicit_intent (perintah tersirat, bukan perintah langsung -- user cerita kondisi/keluhan, maksudnya minta sesuatu dilakukan, misal "laptop lowbat" -> maksudnya soal baterai)
+- ambiguous (tidak jelas maksudnya, menggantung, dibatalkan, obrolan random di luar topik, atau butuh konteks sebelumnya yang tidak tersedia)
+
+Output HANYA JSON murni, tanpa markdown fence, tanpa penjelasan: {"category": "..."}
+
+Contoh:
+Input: "Tolong matikan lampu kamar terus kunci pintu depan."
+Output: {"category": "single_intent"}
+
+Input: "Buka spotify terus nyalain lagu Noah, habis itu set alarm jam 5 pagi."
+Output: {"category": "multi_intent"}
+
+Input: "Laptop aku lowbat banget nih dari tadi."
+Output: {"category": "implicit_intent"}
+
+Input: "Eh gajadi deh gausah."
+Output: {"category": "ambiguous"}"""
+
+
+def build_router_stage1_messages(text: str, category: str) -> list[dict[str, str]]:
+    return [
+        {"role": "system", "content": ROUTER_STAGE1_PROMPT},
+        {"role": "user", "content": text},
+        {"role": "assistant", "content": json.dumps({"category": category}, ensure_ascii=False)},
+    ]
+
+
+ROUTER_STAGE2_SINGLE_PROMPT = """Tentukan SATU domain untuk seluruh kalimat user ini (jangan dipecah,
+kalimat ini sudah dipastikan hanya 1 topik). Pilih dari: system, media,
+persona, coding, information, memory, productivity, unknown (kalau tidak
+masuk 7 domain di atas).
+
+Output HANYA JSON murni, tanpa markdown fence: {"domain": "..."}
+
+Contoh:
+Input: "Buka spotify."
+Output: {"domain": "system"}
+
+Input: "Putar lagu Noah."
+Output: {"domain": "media"}
+
+Input: "Perbaikin bug di file server.js ini."
+Output: {"domain": "coding"}
+
+Input: "Laptop aku lowbat banget nih."
+Output: {"domain": "system"}
+
+Input: "Eh gajadi deh."
+Output: {"domain": "unknown"}"""
+
+
+def build_router_stage2_single_messages(text: str, domain: str) -> list[dict[str, str]]:
+    return [
+        {"role": "system", "content": ROUTER_STAGE2_SINGLE_PROMPT},
+        {"role": "user", "content": text},
+        {"role": "assistant", "content": json.dumps({"domain": domain}, ensure_ascii=False)},
+    ]
+
+
+ROUTER_STAGE2_MULTI_PROMPT = """Kalimat user ini SUDAH DIPASTIKAN berisi lebih dari 1 topik/domain.
+Pecah jadi beberapa segment, satu segment per domain. Domain: system,
+media, persona, coding, information, memory, productivity, unknown.
+
+Output HANYA JSON murni, tanpa markdown fence: {"segments": [{"domain": "...", "text": "..."}]}
+
+Contoh:
+Input: "Buka spotify terus muter lagu Hindia."
+Output: {"segments": [{"domain": "system", "text": "Buka spotify"}, {"domain": "media", "text": "muter lagu Hindia"}]}"""
+
+
+def build_router_stage2_multi_messages(row: dict[str, Any]) -> list[dict[str, str]]:
+    segments_out = [{"domain": seg["domain"], "text": seg["text"]} for seg in row["segments"]]
+    assistant_json = json.dumps({"segments": segments_out}, ensure_ascii=False)
+    return [
+        {"role": "system", "content": ROUTER_STAGE2_MULTI_PROMPT},
+        {"role": "user", "content": row["input"]},
+        {"role": "assistant", "content": assistant_json},
+    ]
+
+
+ROUTER_SYSTEM_PROMPT_SIMPLE = """Kamu adalah Router untuk sistem asisten Liana. Tugasmu HANYA:
+1. Baca kalimat user. Kalau ada LEBIH DARI SATU maksud/domain berbeda di
+   dalamnya, pecah jadi beberapa segment -- satu segment per domain.
+2. Untuk tiap segment, tentukan domain-nya: system, media, persona,
+   coding, information, memory, productivity, atau unknown (kalau tidak
+   masuk 7 domain di atas atau tidak jelas).
+
+Kamu TIDAK menentukan action, target, atau parameter detail.
+Kamu TIDAK menjawab pertanyaan user secara langsung.
+Output HANYA JSON, tanpa penjelasan, tanpa markdown fence.
+
+Contoh 1 domain:
+Input: "Putar lagu Noah dong."
+Output: {{"segments": [{{"domain": "media", "text": "Putar lagu Noah dong."}}]}}
+
+Contoh 2 domain (WAJIB dipecah jadi 2 segment terpisah):
+Input: "Buka spotify terus muter lagu Hindia."
+Output: {{"segments": [{{"domain": "system", "text": "Buka spotify"}}, {{"domain": "media", "text": "muter lagu Hindia"}}]}}
+
+Aturan overlap yang harus kamu ingat:
+- Aplikasi media sebagai TARGET murni (cuma buka app-nya) -> system
+- Aplikasi media sebagai KONTEKS dari playback (ada lagu/musik yang mau diputar) -> media
+- "matikan suara/mute" -> system; "matikan musik/stop lagu" -> media
+
+Context sesi:
+last_domain: {last_domain}
+last_action: {last_action}
+session_turn_count: {session_turn_count}
+
+Schema output:
+{{"segments": [{{"domain": "...", "text": "..."}}]}}"""
+
+
 ROUTER_SYSTEM_PROMPT = """Kamu adalah Router untuk sistem asisten Liana. Tugasmu HANYA:
 1. Segmentasi kalimat user menjadi satu atau lebih segment.
 2. Klasifikasikan tiap segment ke salah satu domain berikut:
@@ -139,6 +275,26 @@ def build_router_messages(row: dict[str, Any],
 
     assistant_json = json.dumps({"segments": segments_out}, ensure_ascii=False)
 
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": row["input"]},
+        {"role": "assistant", "content": assistant_json},
+    ]
+
+
+def build_router_messages_simple(row: dict[str, Any],
+                                  last_domain: str = "none",
+                                  last_action: str = "none",
+                                  session_turn_count: int = 1) -> list[dict[str, str]]:
+    """Versi simplified: skema output cuma {domain, text} per segment --
+    tanpa id/confidence/overlap_hint. Tujuannya kurangin beban format buat
+    model kecil (0.8B), fokus ke skill inti: segmentasi + klasifikasi
+    domain. Dipakai buat eksperimen mengatasi kegagalan multi_intent."""
+    system_prompt = ROUTER_SYSTEM_PROMPT_SIMPLE.format(
+        last_domain=last_domain, last_action=last_action, session_turn_count=session_turn_count,
+    )
+    segments_out = [{"domain": seg["domain"], "text": seg["text"]} for seg in row["segments"]]
+    assistant_json = json.dumps({"segments": segments_out}, ensure_ascii=False)
     return [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": row["input"]},

@@ -67,6 +67,9 @@ def main() -> None:
     parser.add_argument("--epochs", type=float, default=3.0)
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--batch-size", type=int, default=4)
+    parser.add_argument("--eval-batch-size", type=int, default=1,
+                         help="Batch size khusus eval, dibikin kecil (default 1) supaya "
+                              "tidak OOM -- prediksi eval numpuk di VRAM sebelum dihitung.")
     parser.add_argument("--grad-accum", type=int, default=4)
     parser.add_argument("--max-seq-len", type=int, default=768)
     parser.add_argument("--warmup-ratio", type=float, default=0.03)
@@ -142,6 +145,8 @@ def main() -> None:
         report_to=[],
         eval_strategy="steps" if "validation" in tokenized_ds else "no",
         eval_steps=args.save_steps if "validation" in tokenized_ds else None,
+        per_device_eval_batch_size=args.eval_batch_size,
+        eval_accumulation_steps=1,  # offload prediksi eval ke CPU tiap batch, cegah OOM
         seed=args.seed,
         remove_unused_columns=False,
     )

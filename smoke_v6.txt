@@ -1,0 +1,234 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:  29%|██▉       | 93/320 [00:00<00:00, 925.71it/s]Loading weights:  87%|████████▋ | 279/320 [00:00<00:00, 1466.19it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 1434.06it/s]
+/home/shinri/sandbox_workspace/Neural/.env/lib/python3.14/site-packages/peft/peft_model.py:665: UserWarning: Found missing adapter keys while loading the checkpoint: ['base_model.model.model.layers.0.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.0.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.0.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.0.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.0.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.0.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.1.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.1.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.1.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.1.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.1.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.1.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.2.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.2.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.2.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.2.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.2.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.2.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.3.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.3.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.3.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.3.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.3.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.3.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.3.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.3.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.3.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.3.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.3.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.3.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.4.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.4.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.4.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.4.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.4.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.4.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.5.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.5.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.5.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.5.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.5.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.5.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.6.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.6.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.6.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.6.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.6.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.6.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.7.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.7.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.7.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.7.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.7.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.7.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.7.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.7.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.7.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.7.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.7.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.7.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.7.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.7.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.8.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.8.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.8.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.8.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.8.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.8.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.9.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.9.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.9.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.9.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.9.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.9.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.10.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.10.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.10.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.10.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.10.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.10.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.11.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.11.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.11.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.11.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.11.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.11.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.11.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.11.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.11.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.11.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.11.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.11.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.11.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.12.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.12.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.12.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.12.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.12.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.12.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.13.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.13.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.13.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.13.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.13.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.13.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.14.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.14.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.14.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.14.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.14.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.14.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.15.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.15.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.15.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.15.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.15.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.15.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.15.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.15.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.15.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.15.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.15.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.15.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.15.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.15.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.16.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.16.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.16.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.16.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.16.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.16.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.17.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.17.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.17.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.17.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.17.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.17.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.18.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.18.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.18.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.18.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.18.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.18.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.19.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.19.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.19.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.19.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.19.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.19.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.19.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.19.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.19.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.19.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.19.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.19.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.19.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.19.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.20.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.20.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.20.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.20.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.20.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.20.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.21.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.21.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.21.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.21.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.21.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.21.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.22.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.22.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.22.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.22.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.22.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.22.mlp.down_proj.lora_B.default.weight', 'base_model.model.model.layers.23.self_attn.q_proj.lora_A.default.weight', 'base_model.model.model.layers.23.self_attn.q_proj.lora_B.default.weight', 'base_model.model.model.layers.23.self_attn.k_proj.lora_A.default.weight', 'base_model.model.model.layers.23.self_attn.k_proj.lora_B.default.weight', 'base_model.model.model.layers.23.self_attn.v_proj.lora_A.default.weight', 'base_model.model.model.layers.23.self_attn.v_proj.lora_B.default.weight', 'base_model.model.model.layers.23.self_attn.o_proj.lora_A.default.weight', 'base_model.model.model.layers.23.self_attn.o_proj.lora_B.default.weight', 'base_model.model.model.layers.23.mlp.gate_proj.lora_A.default.weight', 'base_model.model.model.layers.23.mlp.gate_proj.lora_B.default.weight', 'base_model.model.model.layers.23.mlp.up_proj.lora_A.default.weight', 'base_model.model.model.layers.23.mlp.up_proj.lora_B.default.weight', 'base_model.model.model.layers.23.mlp.down_proj.lora_A.default.weight', 'base_model.model.model.layers.23.mlp.down_proj.lora_B.default.weight'].
+  warnings.warn(warn_message)
+Loading adapter dari ./adapters/router_core_v6 ...
+
+[FAIL] (single_intent) Nyalain wifi laptop aku dong.
+    - jumlah segment=7, ekspektasi=1
+    raw: {"segments": [{"domain": "system", "text": "Nyalain wifi laptop aku dong."}, {"domain": "media", "text": "Nyalain wifi laptop aku dong."}, {"domain": "coding", "text": "Nyalain wifi laptop aku dong."}
+    domains: ['system', 'media', 'coding', 'information', 'memory', 'productivity', 'unknown']
+
+[FAIL] (single_intent) Putarin lagu Payung Teduh yang galau.
+    - output list mentah, bukan {"segments": [...]}
+    - jumlah segment=6, ekspektasi=1
+    raw: ```json
+[
+  {
+    "domain": "media",
+    "text": "Lagu Payung Teduh yang galau"
+  },
+  {
+    "domain": "coding",
+    "text": "Lagu Payung Teduh yang galau"
+  },
+  {
+    "domain": "information",
+    "t
+    domains: ['media', 'coding', 'information', 'memory', 'productivity', 'unknown']
+
+[FAIL] (single_intent) Kirim chat ke Kaito nanya kabar.
+    - domain tidak valid: 'Kaito'
+    - domain salah: dapat ['Kaito'], ekspektasi ['persona']
+    raw: {"segments": [{"domain": "Kaito", "text": "Kaito, kabar baik ya?"}]}
+    domains: ['Kaito']
+
+[FAIL] (single_intent) Perbaikin bug di file server.js ini.
+    - JSON tidak valid
+    raw: ```json
+[
+  {
+    "domain": "system",
+    "text": "Perbaiki bug di file server.js ini."
+  },
+  {
+    "domain": "media",
+    "text": "Perbaiki bug di file server.js ini."
+  },
+  {
+    "domain": "person
+
+[FAIL] (multi_intent) Buka spotify terus muter lagu Hindia yang paling baru.
+    - jumlah segment=1, ekspektasi=2
+    raw: {"segments": [{"domain": "system", "text": "Buka Spotify terus muter lagu Hindia yang paling baru."}]}
+    domains: ['system']
+
+[FAIL] (multi_intent) Cek cuaca hari ini terus ingetin aku bawa payung nanti sore.
+    - domain tidak valid: 'weather'
+    - domain salah: dapat ['weather', 'productivity'], ekspektasi ['information', 'productivity']
+    raw: ```json
+{
+  "segments": [
+    {
+      "domain": "weather",
+      "text": "Cek cuaca hari ini"
+    },
+    {
+      "domain": "productivity",
+      "text": "Ingetin aku bawa payung nanti sore"
+    }
+  ]
+
+    domains: ['weather', 'productivity']
+
+[FAIL] (multi_intent) Tutup discord dan bikinin reminder meeting jam 2.
+    - jumlah segment=1, ekspektasi=2
+    raw: {"segments": [{"domain": "system", "text": "Tutup Discord dan biarkan reminder meeting jam 2."}]}
+    domains: ['system']
+
+[FAIL] (multi_intent) Cariin resep rendang terus simpen ke catatanku.
+    - jumlah segment=1, ekspektasi=2
+    raw: ```json
+{
+  "segments": [
+    {
+      "domain": "coding",
+      "text": "Cariin resep rendang terus simpan ke catatanku."
+    }
+  ]
+}
+```
+    domains: ['coding']
+
+[PASS] (compound_command) Pause dulu musiknya terus lanjutin lagi abis ini.
+    domains: ['media']
+
+[FAIL] (compound_command) Buka terminal terus langsung jalanin script deploy.
+    - JSON tidak valid
+    raw: ```json
+[
+  {
+    "domain": "system",
+    "text": "Buka terminal terus langsung jalankan script deploy."
+  },
+  {
+    "domain": "media",
+    "text": "Buka terminal terus langsung jalankan script deplo
+
+[FAIL] (ambiguous) Matiin itu dong.
+    - domain salah: dapat ['media'], ekspektasi ['unknown']
+    raw: {"segments": [{"domain": "media", "text": "Matiin itu dong."}]}
+    domains: ['media']
+
+[FAIL] (ambiguous) Ulang yang tadi ya.
+    - domain salah: dapat ['system'], ekspektasi ['unknown']
+    raw: ```json
+{
+  "segments": [
+    {
+      "domain": "system",
+      "text": "Ulang yang tadi ya."
+    }
+  ]
+}
+```
+    domains: ['system']
+
+[FAIL] (ambiguous) Ganti aja deh yang ini.
+    - JSON tidak valid
+    raw: ```json
+{
+  "segments": [
+    {
+      "domain": "system",
+      "text": "Kamu adalah Router. Domain: system, media, persona, coding, information, memory, productivity, unknown."
+    },
+    {
+      "do
+
+[FAIL] (negative_unknown) Menurutmu ujan itu romantis apa nyusahin sih?
+    - domain tidak valid: 'romantis'
+    - domain tidak valid: 'nyusahin'
+    - jumlah segment=2, ekspektasi=1
+    raw: {"segments": [{"domain": "romantis", "text": "Ujan itu romantis, tapi nyusahin sih?"}, {"domain": "nyusahin", "text": "nyusahin sih?"}]}
+    domains: ['romantis', 'nyusahin']
+
+[FAIL] (negative_unknown) asdkjaskjd wkwkwk apaan sih ini
+    - domain salah: dapat ['system'], ekspektasi ['unknown']
+    raw: {"segments": [{"domain": "system", "text": "Asdkjaskjd wkwkwk apaan sih ini"}]}
+    domains: ['system']
+
+[FAIL] (negative_unknown) Kamu bisa nyanyi nggak sih sebenernya?
+    - JSON tidak valid
+    raw: Tentu saja! Saya bisa nyanyi.
+
+Berikut adalah beberapa versi nyanyian yang bisa kamu pilih:
+
+**Versi 1: Singkat & Padat**
+> "Kamu, kamu yang hebat,
+> Dunia yang indah,
+> Aku ingin menyanyikan,
+> Semua
+
+[PASS] (domain_overlap_disambiguation) Buka whatsapp.
+    domains: ['system']
+
+[FAIL] (domain_overlap_disambiguation) Matiin suaranya, berisik banget.
+    - domain tidak valid: 'audio'
+    - domain salah: dapat ['audio'], ekspektasi ['system']
+    raw: {"segments": [{"domain": "audio", "text": "Matiin suaranya, berisik banget."}]}
+    domains: ['audio']
+
+[FAIL] (domain_overlap_disambiguation) Cariin alamat rumah nenek dong.
+    - jumlah segment=7, ekspektasi=1
+    raw: ```json
+{
+  "segments": [
+    {
+      "domain": "system",
+      "text": "Cariin alamat rumah nenek dong."
+    },
+    {
+      "domain": "media",
+      "text": "Rumah nenek"
+    },
+    {
+      "domain":
+    domains: ['system', 'media', 'coding', 'information', 'memory', 'productivity', 'unknown']
+
+[FAIL] (implicit_intent) Duh kipas laptop ini berisik banget dari tadi.
+    - domain salah: dapat ['media'], ekspektasi ['system']
+    raw: {"segments": [{"domain": "media", "text": "Kipas laptop berisik dari tadi"}]}
+    domains: ['media']
+
+[FAIL] (implicit_intent) Kerjaan numpuk banget nih minggu ini, pusing.
+    - domain salah: dapat ['coding'], ekspektasi ['productivity']
+    raw: {"segments": [{"domain": "coding", "text": "Kerjaan numpuk banget nih minggu ini, pusing."}]}
+    domains: ['coding']
+
+[PASS] (implicit_intent) Kok lagu ini kayaknya diputer mulu ya dari tadi.
+    domains: ['media']
+
+[PASS] (context_dependent) Lanjutin lagi yang tadi ya.
+    domains: ['system', 'media', 'persona', 'coding', 'information', 'memory', 'productivity', 'unknown']
+
+[FAIL] (context_dependent) Balikin ke yang sebelumnya aja.
+    - JSON tidak valid
+    raw: ```json
+[
+  {
+    "domain": "system",
+    "text": "Balikin ke yang sebelumnya aja."
+  },
+  {
+    "domain": "media",
+    "text": "Balikin ke yang sebelumnya aja."
+  },
+  {
+    "domain": "persona",
+    
+
+==================================================
+RINGKASAN: 4/24 PASS (17%)
+
+Per kategori:
+  single_intent                    0/4
+  multi_intent                     0/4
+  compound_command                 1/2
+  ambiguous                        0/3
+  negative_unknown                 0/3
+  domain_overlap_disambiguation    1/3
+  implicit_intent                  1/3
+  context_dependent                1/2
