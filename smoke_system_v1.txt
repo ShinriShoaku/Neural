@@ -1,0 +1,108 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:   0%|          | 1/473 [00:00<04:16,  1.84it/s]Loading weights:   5%|▍         | 23/473 [00:00<00:09, 46.70it/s]Loading weights:   9%|▉         | 43/473 [00:00<00:05, 78.90it/s]Loading weights:  13%|█▎        | 63/473 [00:00<00:03, 106.05it/s]Loading weights:  19%|█▉        | 89/473 [00:00<00:02, 143.01it/s]Loading weights:  23%|██▎       | 111/473 [00:01<00:02, 146.83it/s]Loading weights:  36%|███▌      | 168/473 [00:01<00:01, 252.02it/s]Loading weights:  64%|██████▎   | 301/473 [00:01<00:00, 534.75it/s]Loading weights: 100%|██████████| 473/473 [00:01<00:00, 339.12it/s]
+Loading adapter dari ./adapters/system_core_v1 ...
+
+[PASS] (application) Nyalain aplikasi telegram.
+    stage1 -> category='application'   raw1='{"category": "application"}'
+    stage2 -> action='launch' target='telegram' params={}   raw2='{"action": "launch", "target": {"type": "application", "value": "telegram"}, "parameters": {}}'
+
+[PASS] (application) Tutup vscode dong.
+    stage1 -> category='application'   raw1='{"category": "application"}'
+    stage2 -> action='close' target='vscode' params={}   raw2='{"action": "close", "target": {"type": "application", "value": "vscode"}, "parameters": {}}'
+
+[PASS] (application) Cek apakah spotify masih nyala.
+    stage1 -> category='application'   raw1='{"category": "application"}'
+    stage2 -> action='check_app_status' target='spotify' params={}   raw2='{"action": "check_app_status", "target": {"type": "application", "value": "spotify"}, "parameters": {}}'
+
+[PASS] (process) Bunuh proses nginx yang lagi jalan.
+    stage1 -> category='process'   raw1='{"category": "process"}'
+    stage2 -> action='kill_process' target='nginx' params={}   raw2='{"action": "kill_process", "target": {"type": "process", "value": "nginx"}, "parameters": {}}'
+
+[PASS] (process) Tampilin daftar proses yang aktif sekarang.
+    stage1 -> category='process'   raw1='{"category": "process"}'
+    stage2 -> action='list_processes' target=None params={}   raw2='{"action": "list_processes", "target": null, "parameters": {}}'
+
+[PASS] (filesystem) Bikinin folder baru namanya Proyek Baru.
+    stage1 -> category='filesystem'   raw1='{"category": "filesystem"}'
+    stage2 -> action='create_folder' target='Proyek Baru' params={}   raw2='{"action": "create_folder", "target": {"type": "folder", "value": "Proyek Baru"}, "parameters": {}}'
+
+[PASS] (filesystem) Hapus file resume.pdf.
+    stage1 -> category='filesystem'   raw1='{"category": "filesystem"}'
+    stage2 -> action='delete_file' target='resume.pdf' params={}   raw2='{"action": "delete_file", "target": {"type": "file", "value": "resume.pdf"}, "parameters": {}}'
+
+[PASS] (filesystem) Geser catatan.txt ke folder Arsip Lama.
+    stage1 -> category='filesystem'   raw1='{"category": "filesystem"}'
+    stage2 -> action='move_file' target='catatan.txt' params={'destination': 'Arsip Lama'}   raw2='{"action": "move_file", "target": {"type": "file", "value": "catatan.txt"}, "parameters": {"destination": "Arsip Lama"}}'
+
+[PASS] (shell) Coba jalanin `docker ps` di terminal.
+    stage1 -> category='shell'   raw1='{"category": "shell"}'
+    stage2 -> action='run_command' target='docker ps' params={}   raw2='{"action": "run_command", "target": {"type": "command", "value": "docker ps"}, "parameters": {}}'
+
+[FAIL] (hardware) Aktifin mikrofon laptop.
+    stage1 -> category='hardware'   raw1='{"category": "hardware"}'
+    stage2 -> action='enable_device' target='mikrofon laptop' params={}   raw2='{"action": "enable_device", "target": {"type": "device", "value": "mikrofon laptop"}, "parameters": {}}'
+    - target salah: dapat 'mikrofon laptop', ekspektasi 'mikrofon'
+
+[PASS] (hardware) Matiin fitur airplane mode.
+    stage1 -> category='hardware'   raw1='{"category": "hardware"}'
+    stage2 -> action='disable_device' target='airplane mode' params={}   raw2='{"action": "disable_device", "target": {"type": "device", "value": "airplane mode"}, "parameters": {}}'
+
+[PASS] (audio) Diemin suaranya bentar.
+    stage1 -> category='audio'   raw1='{"category": "audio"}'
+    stage2 -> action='mute' target=None params={}   raw2='{"action": "mute", "target": null, "parameters": {}}'
+
+[PASS] (audio) Gedein volume dikit.
+    stage1 -> category='audio'   raw1='{"category": "audio"}'
+    stage2 -> action='volume_up' target=None params={'amount': 10}   raw2='{"action": "volume_up", "target": null, "parameters": {"amount": 10}}'
+
+[PASS] (audio) Atur volume ke 35%.
+    stage1 -> category='audio'   raw1='{"category": "audio"}'
+    stage2 -> action='set_volume' target=None params={'level': 35}   raw2='{"action": "set_volume", "target": null, "parameters": {"level": 35}}'
+
+[PASS] (display) Redupin layar dikit.
+    stage1 -> category='display'   raw1='{"category": "display"}'
+    stage2 -> action='brightness_down' target=None params={'amount': 10}   raw2='{"action": "brightness_down", "target": null, "parameters": {"amount": 10}}'
+
+[PASS] (display) Pasang brightness di 60%.
+    stage1 -> category='display'   raw1='{"category": "display"}'
+    stage2 -> action='set_brightness' target=None params={'level': 60}   raw2='{"action": "set_brightness", "target": null, "parameters": {"level": 60}}'
+
+[PASS] (network) Sambungin ke wifi Kos_Elit.
+    stage1 -> category='network'   raw1='{"category": "network"}'
+    stage2 -> action='connect_wifi' target='Kos_Elit' params={}   raw2='{"action": "connect_wifi", "target": {"type": "network", "value": "Kos_Elit"}, "parameters": {}}'
+
+[PASS] (network) Cek status wifi sekarang.
+    stage1 -> category='network'   raw1='{"category": "network"}'
+    stage2 -> action='check_connection' target=None params={}   raw2='{"action": "check_connection", "target": null, "parameters": {}}'
+
+[PASS] (system_query) Berapa persen sisa baterai?
+    stage1 -> category='system_query'   raw1='{"category": "system_query"}'
+    stage2 -> action='check_resource' target='baterai' params={}   raw2='{"action": "check_resource", "target": {"type": "resource", "value": "baterai"}, "parameters": {}}'
+
+[PASS] (system_query) Gimana status penggunaan disk?
+    stage1 -> category='system_query'   raw1='{"category": "system_query"}'
+    stage2 -> action='check_resource' target='disk' params={}   raw2='{"action": "check_resource", "target": {"type": "resource", "value": "disk"}, "parameters": {}}'
+
+[PASS] (ambiguous_negative) Ceritain dongeng soal naga.
+    stage1 -> category='ambiguous_negative'   raw1='{"category": "ambiguous_negative"}'
+    stage2 -> (di-skip)
+
+[PASS] (ambiguous_negative) Kok bisa error terus ya ini.
+    stage1 -> category='ambiguous_negative'   raw1='{"category": "ambiguous_negative"}'
+    stage2 -> (di-skip)
+
+==================================================
+RINGKASAN: 21/22 PASS (95%)
+
+Per kategori:
+  application            3/3
+  process                2/2
+  filesystem             3/3
+  shell                  1/1
+  hardware               1/2
+  audio                  3/3
+  display                2/2
+  network                2/2
+  system_query           2/2
+  ambiguous_negative     2/2

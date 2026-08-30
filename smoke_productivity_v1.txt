@@ -1,0 +1,58 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:   0%|          | 1/473 [00:00<03:54,  2.01it/s]Loading weights:   7%|▋         | 32/473 [00:00<00:06, 69.71it/s]Loading weights:  13%|█▎        | 60/473 [00:00<00:03, 118.98it/s]Loading weights:  20%|██        | 95/473 [00:00<00:02, 173.79it/s]Loading weights:  28%|██▊       | 134/473 [00:00<00:01, 228.44it/s]Loading weights:  37%|███▋      | 173/473 [00:01<00:01, 265.56it/s]Loading weights:  44%|████▎     | 206/473 [00:01<00:00, 272.36it/s]Loading weights:  50%|█████     | 238/473 [00:01<00:00, 267.94it/s]Loading weights:  58%|█████▊    | 273/473 [00:01<00:00, 286.14it/s]Loading weights:  64%|██████▍   | 304/473 [00:01<00:00, 290.87it/s]Loading weights:  78%|███████▊  | 367/473 [00:01<00:00, 384.20it/s]Loading weights:  95%|█████████▍| 448/473 [00:01<00:00, 501.87it/s]Loading weights: 100%|██████████| 473/473 [00:01<00:00, 277.48it/s]
+Loading adapter dari ./adapters/productivity_core_v1 ...
+
+[PASS] (calendar) Bikin acara presentasi project besok jam 2 siang.
+    stage1 -> category='calendar'   raw1='{"category": "calendar"}'
+    stage2 -> output={'intent': 'calendar', 'action': 'create', 'target': {'type': 'event', 'value': 'presentasi project'}, 'parameters': {'time': 'besok jam 2 siang'}}   raw2='{"target": {"type": "event", "value": "presentasi project"}, "parameters": {"time": "besok jam 2 siang"}}'
+
+[PASS] (reminder) Tolong ingetin aku jam 7 malam nanti kirim invoice.
+    stage1 -> category='reminder'   raw1='{"category": "reminder"}'
+    stage2 -> output={'intent': 'reminder', 'action': 'create', 'target': None, 'parameters': {'time': 'jam 7 malam nanti', 'content': 'kirim invoice'}}   raw2='{"parameters": {"time": "jam 7 malam nanti", "content": "kirim invoice"}}'
+
+[PASS] (todo) Catet todo follow up klien.
+    stage1 -> category='todo'   raw1='{"category": "todo"}'
+    stage2 -> output={'intent': 'todo', 'action': 'create', 'target': {'type': 'todo', 'value': 'follow up klien'}, 'parameters': {}}   raw2='{"action": "create", "target": {"type": "todo", "value": "follow up klien"}}'
+
+[PASS] (todo) Centang todo beli obat udah kelar.
+    stage1 -> category='todo'   raw1='{"category": "todo"}'
+    stage2 -> output={'intent': 'todo', 'action': 'complete', 'target': {'type': 'todo', 'value': 'beli obat'}, 'parameters': {}}   raw2='{"action": "complete", "target": {"type": "todo", "value": "beli obat"}}'
+
+[PASS] (schedule) Set rutinitas jalan pagi tiap hari jam 7 pagi.
+    stage1 -> category='schedule'   raw1='{"category": "schedule"}'
+    stage2 -> output={'intent': 'schedule', 'action': 'schedule', 'target': {'type': 'event', 'value': 'jalan pagi'}, 'parameters': {'recurrence': 'daily 07:00'}}   raw2='{"target": {"type": "event", "value": "jalan pagi"}, "parameters": {"recurrence": "daily 07:00"}}'
+
+[PASS] (notification) Alert aku kalau ada email baru masuk.
+    stage1 -> category='notification'   raw1='{"category": "notification"}'
+    stage2 -> output={'intent': 'notification', 'action': 'notify', 'target': {'type': 'notification', 'value': 'ada email baru masuk'}, 'parameters': {}}   raw2='{"target": {"type": "notification", "value": "ada email baru masuk"}}'
+
+[PASS] (communication) Kirim pesan 'oke ditunggu ya'.
+    stage1 -> category='communication'   raw1='{"category": "communication"}'
+    stage2 -> output={'intent': 'communication', 'action': 'send', 'target': {'type': 'message', 'value': 'oke ditunggu ya'}, 'parameters': {}}   raw2='{"target": {"type": "message", "value": "oke ditunggu ya"}}'
+
+[PASS] (update_delete) Cancel todo antar paket ke kantor pos.
+    stage1 -> category='update_delete'   raw1='{"category": "update_delete"}'
+    stage2 -> output={'intent': 'todo', 'action': 'delete', 'target': {'type': 'todo', 'value': 'antar paket ke kantor pos'}, 'parameters': {}}   raw2='{"intent": "todo", "action": "delete", "target": {"type": "todo", "value": "antar paket ke kantor pos"}, "parameters": {}}'
+
+[PASS] (ambiguous) Geser aja deh.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> (di-skip) output={'intent': 'calendar', 'action': 'update', 'target': {'type': 'event', 'value': None}, 'parameters': {}}
+
+[PASS] (negative) Cari tahu ibu kota Jepang.
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip) output=None
+
+==================================================
+RINGKASAN: 10/10 PASS (100%)
+
+Per kategori:
+  calendar         1/1
+  reminder         1/1
+  todo             2/2
+  schedule         1/1
+  notification     1/1
+  communication    1/1
+  update_delete    1/1
+  ambiguous        1/1
+  negative         1/1

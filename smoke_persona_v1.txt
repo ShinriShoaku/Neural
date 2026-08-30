@@ -1,0 +1,67 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:   0%|          | 1/473 [00:00<03:21,  2.34it/s]Loading weights:   5%|▌         | 25/473 [00:00<00:07, 61.53it/s]Loading weights:  11%|█         | 50/473 [00:00<00:03, 107.24it/s]Loading weights:  15%|█▌        | 72/473 [00:00<00:03, 129.87it/s]Loading weights:  20%|██        | 95/473 [00:00<00:02, 153.01it/s]Loading weights:  25%|██▌       | 120/473 [00:00<00:02, 171.30it/s]Loading weights:  30%|███       | 142/473 [00:01<00:01, 178.86it/s]Loading weights:  35%|███▌      | 167/473 [00:01<00:01, 197.53it/s]Loading weights:  41%|████      | 192/473 [00:01<00:01, 211.26it/s]Loading weights:  45%|████▌     | 215/473 [00:01<00:01, 201.55it/s]Loading weights:  50%|█████     | 237/473 [00:01<00:01, 189.89it/s]Loading weights:  59%|█████▉    | 278/473 [00:01<00:00, 246.77it/s]Loading weights:  78%|███████▊  | 370/473 [00:01<00:00, 429.65it/s]Loading weights: 100%|██████████| 473/473 [00:01<00:00, 255.63it/s]
+Loading adapter dari ./adapters/persona_core_v1 ...
+
+[PASS] (character_call) Panggilin Kaito dong.
+    stage1 -> category='character_call'   raw1='{"category": "character_call"}'
+    stage2 -> action='call' target='Kaito' params={}   raw2='{"action": "call", "target": {"type": "persona", "value": "Kaito"}, "parameters": {}}'
+
+[PASS] (character_switch) Beralih ke Yuki aja.
+    stage1 -> category='character_switch'   raw1='{"category": "character_switch"}'
+    stage2 -> action='switch' target='Yuki' params={}   raw2='{"action": "switch", "target": {"type": "persona", "value": "Yuki"}, "parameters": {}}'
+
+[PASS] (conversation) Ngobrol sama Rei soal kucing peliharaan.
+    stage1 -> category='conversation'   raw1='{"category": "conversation"}'
+    stage2 -> action='talk' target='Rei' params={'topic': 'kucing peliharaan'}   raw2='{"action": "talk", "target": {"type": "persona", "value": "Rei"}, "parameters": {"topic": "kucing peliharaan"}}'
+
+[PASS] (conversation) Tanyain Nova tentang startup idea.
+    stage1 -> category='conversation'   raw1='{"category": "conversation"}'
+    stage2 -> action='ask' target='Nova' params={'topic': 'startup idea'}   raw2='{"action": "ask", "target": {"type": "persona", "value": "Nova"}, "parameters": {"topic": "startup idea"}}'
+
+[PASS] (topic_extraction) Minta Sena cerita soal traveling dong.
+    stage1 -> category='topic_extraction'   raw1='{"category": "topic_extraction"}'
+    stage2 -> action='talk' target='Sena' params={'topic': 'traveling'}   raw2='{"action": "talk", "target": {"type": "persona", "value": "Sena"}, "parameters": {"topic": "traveling"}}'
+
+[PASS] (roleplay_intent) Kiro, jadiin dirimu guru matematika aku.
+    stage1 -> category='roleplay_intent'   raw1='{"category": "roleplay_intent"}'
+    stage2 -> action='roleplay' target='Kiro' params={'role': 'guru matematika'}   raw2='{"action": "roleplay", "target": {"type": "persona", "value": "Kiro"}, "parameters": {"role": "guru matematika"}}'
+
+[PASS] (dialogue_control) Terusin percakapan tadi.
+    stage1 -> category='dialogue_control'   raw1='{"category": "dialogue_control"}'
+    stage2 -> action='continue' target='current' params={}   raw2='{"action": "continue", "target": {"type": "conversation", "value": "current"}, "parameters": {}}'
+
+[PASS] (dialogue_control) Kembaliin ke pembahasan awal.
+    stage1 -> category='dialogue_control'   raw1='{"category": "dialogue_control"}'
+    stage2 -> action='resume_topic' target='previous' params={}   raw2='{"action": "resume_topic", "target": {"type": "topic", "value": "previous"}, "parameters": {}}'
+
+[PASS] (context_dependency) Bilangin ke dia soal itu deh.
+    stage1 -> category='context_dependency'   raw1='{"category": "context_dependency"}'
+    stage2 -> action='talk' target=None params={}   raw2='{"action": "talk", "target": {"type": "persona", "value": null}, "parameters": {}}'
+
+[FAIL] (ambiguous) Minta yang itu jelasin.
+    stage1 -> category='context_dependency'   raw1='{"category": "context_dependency"}'
+    stage2 -> action='explain' target=None params={}   raw2='{"action": "explain", "target": {"type": "persona", "value": null}, "parameters": {}}'
+    - category salah: dapat 'context_dependency', ekspektasi 'ambiguous'
+
+[PASS] (negative) Apa itu blockchain?
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip)
+
+[PASS] (negative) Kenapa quantum computing itu penting?
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip)
+
+==================================================
+RINGKASAN: 11/12 PASS (92%)
+
+Per kategori:
+  character_call       1/1
+  character_switch     1/1
+  conversation         2/2
+  topic_extraction     1/1
+  roleplay_intent      1/1
+  dialogue_control     2/2
+  context_dependency   1/1
+  ambiguous            0/1
+  negative             2/2

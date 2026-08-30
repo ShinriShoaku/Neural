@@ -22,6 +22,7 @@ import json
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers.models.qwen3_5.modeling_qwen3_5 import Qwen3_5ForConditionalGeneration
 from peft import PeftModel
 
 from chatml_format import ROUTER_SYSTEM_PROMPT_MINIMAL
@@ -149,9 +150,9 @@ def main() -> None:
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModelForCausalLM.from_pretrained(
+    model = Qwen3_5ForConditionalGeneration.from_pretrained(
         args.base_model_dir,
-        torch_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
+        dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
         trust_remote_code=True,
         device_map="auto" if torch.cuda.is_available() else None,
     )

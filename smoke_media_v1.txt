@@ -1,0 +1,91 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:   0%|          | 1/473 [00:00<04:13,  1.87it/s]Loading weights:   4%|▍         | 20/473 [00:00<00:10, 41.42it/s]Loading weights:   8%|▊         | 37/473 [00:00<00:06, 64.89it/s]Loading weights:  12%|█▏        | 56/473 [00:00<00:04, 90.92it/s]Loading weights:  16%|█▌        | 75/473 [00:01<00:03, 111.67it/s]Loading weights:  19%|█▉        | 91/473 [00:01<00:03, 121.56it/s]Loading weights:  23%|██▎       | 111/473 [00:01<00:02, 140.49it/s]Loading weights:  27%|██▋       | 129/473 [00:01<00:02, 136.69it/s]Loading weights:  31%|███▏      | 148/473 [00:01<00:02, 141.00it/s]Loading weights:  36%|███▌      | 171/473 [00:01<00:01, 162.33it/s]Loading weights:  41%|████      | 194/473 [00:01<00:01, 176.96it/s]Loading weights:  45%|████▌     | 213/473 [00:01<00:01, 175.24it/s]Loading weights:  49%|████▉     | 232/473 [00:01<00:01, 168.59it/s]Loading weights:  53%|█████▎    | 250/473 [00:02<00:01, 157.53it/s]Loading weights:  58%|█████▊    | 273/473 [00:02<00:01, 172.82it/s]Loading weights:  62%|██████▏   | 292/473 [00:02<00:01, 176.94it/s]Loading weights:  66%|██████▌   | 311/473 [00:02<00:00, 177.88it/s]Loading weights:  73%|███████▎  | 344/473 [00:02<00:00, 213.20it/s]Loading weights:  86%|████████▌ | 407/473 [00:02<00:00, 316.48it/s]Loading weights:  98%|█████████▊| 463/473 [00:02<00:00, 372.95it/s]Loading weights: 100%|██████████| 473/473 [00:02<00:00, 171.69it/s]
+Loading adapter dari ./adapters/media_core_v1 ...
+
+[PASS] (playback) Puterin lagu Payung Teduh dong.
+    stage1 -> category='playback'   raw1='{"category": "playback"}'
+    stage2 -> action='play' target='Payung Teduh' params={}   raw2='{"action": "play", "target": {"type": "artist", "value": "Payung Teduh"}, "parameters": {}}'
+
+[PASS] (playback) Setel album Bumi ya.
+    stage1 -> category='playback'   raw1='{"category": "playback"}'
+    stage2 -> action='play' target='Bumi' params={}   raw2='{"action": "play", "target": {"type": "album", "value": "Bumi"}, "parameters": {}}'
+
+[PASS] (playback) Terusin lagunya.
+    stage1 -> category='playback'   raw1='{"category": "playback"}'
+    stage2 -> action='resume' target='current' params={}   raw2='{"action": "resume", "target": {"type": "player", "value": "current"}, "parameters": {}}'
+
+[FAIL] (search) Temuin lagu galau di Joox.
+    stage1 -> category='search'   raw1='{"category": "search"}'
+    stage2 -> action='search' target='lagu galau' params={}   raw2='{"action": "search", "target": {"type": "song", "value": "lagu galau"}, "parameters": {}}'
+    - target salah: dapat 'lagu galau', ekspektasi 'galau'
+    - parameters salah: dapat {}, ekspektasi {'player': 'joox'}
+
+[PASS] (queue) Masukin lagu ini ke antrian dong.
+    stage1 -> category='queue'   raw1='{"category": "queue"}'
+    stage2 -> action='queue_add' target='current' params={}   raw2='{"action": "queue_add", "target": {"type": "song", "value": "current"}, "parameters": {}}'
+
+[PASS] (queue) Bersihin semua antrian.
+    stage1 -> category='queue'   raw1='{"category": "queue"}'
+    stage2 -> action='queue_clear' target='current' params={}   raw2='{"action": "queue_clear", "target": {"type": "queue", "value": "current"}, "parameters": {}}'
+
+[PASS] (queue) Kasih liat isi antrian dong.
+    stage1 -> category='queue'   raw1='{"category": "queue"}'
+    stage2 -> action='queue_list' target='current' params={}   raw2='{"action": "queue_list", "target": {"type": "queue", "value": "current"}, "parameters": {}}'
+
+[PASS] (player_control) Jeda dulu musiknya.
+    stage1 -> category='player_control'   raw1='{"category": "player_control"}'
+    stage2 -> action='pause' target='current' params={}   raw2='{"action": "pause", "target": {"type": "player", "value": "current"}, "parameters": {}}'
+
+[PASS] (player_control) Mundur satu lagu dong.
+    stage1 -> category='player_control'   raw1='{"category": "player_control"}'
+    stage2 -> action='previous' target='current' params={}   raw2='{"action": "previous", "target": {"type": "player", "value": "current"}, "parameters": {}}'
+
+[PASS] (player_control) Acakin urutan lagu.
+    stage1 -> category='player_control'   raw1='{"category": "player_control"}'
+    stage2 -> action='shuffle' target='current' params={}   raw2='{"action": "shuffle", "target": {"type": "player", "value": "current"}, "parameters": {}}'
+
+[PASS] (player_control) Berhentiin musik ini.
+    stage1 -> category='player_control'   raw1='{"category": "player_control"}'
+    stage2 -> action='stop' target='current' params={}   raw2='{"action": "stop", "target": {"type": "player", "value": "current"}, "parameters": {}}'
+
+[PASS] (streaming) Buka video review HP di Netflix.
+    stage1 -> category='streaming'   raw1='{"category": "streaming"}'
+    stage2 -> action='play_stream' target='current' params={'player': 'netflix'}   raw2='{"action": "play_stream", "target": {"type": "video", "value": "current"}, "parameters": {"player": "netflix"}}'
+
+[PASS] (streaming) Load link video ini deh.
+    stage1 -> category='streaming'   raw1='{"category": "streaming"}'
+    stage2 -> action='resolve' target='url_placeholder' params={}   raw2='{"action": "resolve", "target": {"type": "stream", "value": "url_placeholder"}, "parameters": {}}'
+
+[PASS] (metadata) Tau nggak nama artis lagu ini?
+    stage1 -> category='metadata'   raw1='{"category": "metadata"}'
+    stage2 -> action='query_metadata' target='current' params={'field': 'nama artis'}   raw2='{"action": "query_metadata", "target": {"type": "song", "value": "current"}, "parameters": {"field": "nama artis"}}'
+
+[PASS] (ambiguous) Pindah ke yang lain.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> action='play' target=None params={}   raw2='{"action": "play", "target": {"type": "song", "value": null}, "parameters": {}}'
+
+[PASS] (ambiguous) Ini kurang pas, ganti dong.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> action='play' target=None params={}   raw2='{"action": "play", "target": {"type": "song", "value": null}, "parameters": {}}'
+
+[PASS] (negative) Siapa member Coldplay?
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip)
+
+[PASS] (negative) Kapan Tulus konser di Bandung?
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip)
+
+==================================================
+RINGKASAN: 17/18 PASS (94%)
+
+Per kategori:
+  playback         3/3
+  search           0/1
+  queue            3/3
+  player_control   4/4
+  streaming        2/2
+  metadata         1/1
+  ambiguous        2/2
+  negative         2/2

@@ -1,0 +1,59 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  24%|██▎       | 112/473 [00:00<00:00, 1119.92it/s]Loading weights:  58%|█████▊    | 276/473 [00:00<00:00, 1421.04it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 1777.83it/s]
+Loading adapter dari ./adapters/information_core_v1 ...
+
+[PASS] (search) Cariin cara pindah kewarganegaraan.
+    stage1 -> category='search'   raw1='{"category": "search"}'
+    stage2 -> target={'type': 'web', 'value': 'cara pindah kewarganegaraan'} params={}   raw2='{"target": {"type": "web", "value": "cara pindah kewarganegaraan"}}'
+
+[PASS] (weather) Gimana cuaca di Surabaya besok?
+    stage1 -> category='weather'   raw1='{"category": "weather"}'
+    stage2 -> target={'type': 'weather', 'value': 'tomorrow'} params={'location': 'Surabaya'}   raw2='{"target": {"type": "weather", "value": "tomorrow"}, "parameters": {"location": "Surabaya"}}'
+
+[PASS] (time) Pukul berapa sekarang di London?
+    stage1 -> category='time'   raw1='{"category": "time"}'
+    stage2 -> target={'type': 'time', 'value': 'now'} params={'location': 'London'}   raw2='{"target": {"type": "time", "value": "now"}, "parameters": {"location": "London"}}'
+
+[PASS] (translation) Tolong artiin 'thank you very much' ke bahasa Jepang.
+    stage1 -> category='translation'   raw1='{"category": "translation"}'
+    stage2 -> target=None params={'text': 'thank you very much', 'target_language': 'ja'}   raw2='{"parameters": {"text": "thank you very much", "target_language": "ja"}}'
+
+[PASS] (lookup) Cek siapa pendiri Amazon.
+    stage1 -> category='lookup'   raw1='{"category": "lookup"}'
+    stage2 -> target={'type': 'entity', 'value': 'pendiri Amazon'} params={}   raw2='{"target": {"type": "entity", "value": "pendiri Amazon"}}'
+
+[PASS] (calculation) Hitung 25 tambah 17.
+    stage1 -> category='calculation'   raw1='{"category": "calculation"}'
+    stage2 -> target=None params={'expression': '25 + 17'}   raw2='{"parameters": {"expression": "25 + 17"}}'
+
+[PASS] (comparison) Pilih mana, Grab atau Gojek?
+    stage1 -> category='comparison'   raw1='{"category": "comparison"}'
+    stage2 -> target=None params={'items': ['Grab', 'Gojek']}   raw2='{"parameters": {"items": ["Grab", "Gojek"]}}'
+
+[PASS] (knowledge) Apa maksudnya bioteknologi?
+    stage1 -> category='knowledge'   raw1='{"category": "knowledge"}'
+    stage2 -> target={'type': 'knowledge', 'value': 'bioteknologi'} params={}   raw2='{"target": {"type": "knowledge", "value": "bioteknologi"}}'
+
+[PASS] (ambiguous) Cariin dulu deh.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> (di-skip) target={'type': 'web', 'value': None} params={}
+
+[PASS] (negative) Simpen info kalau aku alergi seafood.
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip) target=None params={}
+
+==================================================
+RINGKASAN: 10/10 PASS (100%)
+
+Per kategori:
+  search         1/1
+  weather        1/1
+  time           1/1
+  translation    1/1
+  lookup         1/1
+  calculation    1/1
+  comparison     1/1
+  knowledge      1/1
+  ambiguous      1/1
+  negative       1/1

@@ -1,0 +1,55 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  14%|█▎        | 65/473 [00:00<00:00, 638.42it/s]Loading weights:  54%|█████▎    | 254/473 [00:00<00:00, 1364.44it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 1701.14it/s]
+Loading adapter dari ./adapters/memory_core_v1 ...
+
+[PASS] (remember) Tolong catet aku alergi udang.
+    stage1 -> category='remember'   raw1='{"category": "remember"}'
+    stage2 -> params={'category': 'identity', 'content': 'user alergi udang'}   raw2='{"parameters": {"category": "identity", "content": "user alergi udang"}}'
+
+[PASS] (preference_memory) Inget ya aku suka musik akustik.
+    stage1 -> category='preference_memory'   raw1='{"category": "preference_memory"}'
+    stage2 -> params={'category': 'preference', 'content': 'user suka musik akustik'}   raw2='{"parameters": {"category": "preference", "content": "user suka musik akustik"}}'
+
+[PASS] (event_memory) Catet aku mau reuni SMA bulan depan.
+    stage1 -> category='event_memory'   raw1='{"category": "event_memory"}'
+    stage2 -> params={'category': 'event', 'content': 'user mau reuni SMA bulan depan'}   raw2='{"parameters": {"category": "event", "content": "user mau reuni SMA bulan depan"}}'
+
+[PASS] (retrieve) Kamu tau nggak sih tempat kerja aku?
+    stage1 -> category='retrieve'   raw1='{"category": "retrieve"}'
+    stage2 -> params={'category': 'identity', 'query': 'tempat kerja'}   raw2='{"parameters": {"category": "identity", "query": "tempat kerja"}}'
+
+[FAIL] (update) Update dong sekarang aku tinggal di Malang.
+    stage1 -> category='update'   raw1='{"category": "update"}'
+    stage2 -> params={'category': 'identity', 'content': 'user tinggal di Malang'}   raw2='{"parameters": {"category": "identity", "content": "user tinggal di Malang"}}'
+    - parameters salah: dapat {'category': 'identity', 'content': 'user tinggal di Malang'}, ekspektasi {'category': 'identity', 'content': 'user sekarang tinggal di Malang'}
+
+[PASS] (forget) Hapus ingatan soal preferensi film aku dong.
+    stage1 -> category='forget'   raw1='{"category": "forget"}'
+    stage2 -> params={'category': 'preference'}   raw2='{"parameters": {"category": "preference"}}'
+
+[PASS] (search) Cariin ingatan soal cerita soal keluarga.
+    stage1 -> category='search'   raw1='{"category": "search"}'
+    stage2 -> params={'query': 'cerita soal keluarga'}   raw2='{"parameters": {"query": "cerita soal keluarga"}}'
+
+[PASS] (ambiguous) Simpen deh.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> (di-skip) params={'content': None}
+
+[PASS] (negative) Berapa hasil 25 kali 4?
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip) params={}
+
+==================================================
+RINGKASAN: 8/9 PASS (89%)
+
+Per kategori:
+  remember             1/1
+  preference_memory    1/1
+  event_memory         1/1
+  retrieve             1/1
+  update               0/1
+  forget               1/1
+  search               1/1
+  ambiguous            1/1
+  negative             1/1

@@ -70,6 +70,19 @@ TEST_CASES = [
 ]
 
 
+def _get_stop_token_ids(tokenizer) -> list[int]:
+    """<|im_end|> HARUS jadi stop token eksplisit -- kalau cuma andalin
+    default eos_token_id, generate() kadang nggak berhenti di situ dan
+    lanjut nge-halusinasi giliran percakapan baru."""
+    ids = set()
+    if tokenizer.eos_token_id is not None:
+        ids.add(tokenizer.eos_token_id)
+    im_end_id = tokenizer.convert_tokens_to_ids("<|im_end|>")
+    if im_end_id is not None and im_end_id != tokenizer.unk_token_id:
+        ids.add(im_end_id)
+    return list(ids)
+
+
 def generate(model, tokenizer, system_prompt: str, user_text: str, max_new_tokens: int = 150) -> str:
     messages = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_text}]
     prompt_text = tokenizer.apply_chat_template(
@@ -80,6 +93,7 @@ def generate(model, tokenizer, system_prompt: str, user_text: str, max_new_token
         output_ids = model.generate(
             **inputs, max_new_tokens=max_new_tokens, do_sample=False,
             pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
+            eos_token_id=_get_stop_token_ids(tokenizer),
         )
     new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
     return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
@@ -87,6 +101,13 @@ def generate(model, tokenizer, system_prompt: str, user_text: str, max_new_token
 
 def parse_json(raw_text: str):
     text = raw_text.strip()
+    # Jaring pengaman: potong di penanda giliran baru kalau model kelanjutan
+    # nge-halusinasi turn berikutnya (harusnya sudah dicegah oleh eos_token_id
+    # eksplisit di generate(), tapi ini tetap dijaga untuk adapter lama).
+    for marker in ("<|im_end|>", "\nuser\n", "\nassistant\n", "<|im_start|>"):
+        idx = text.find(marker)
+        if idx != -1:
+            text = text[:idx].strip()
     if text.startswith("```"):
         text = text.strip("`")
         if text.startswith("json"):

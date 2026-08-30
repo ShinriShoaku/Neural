@@ -1,0 +1,63 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  23%|██▎       | 111/473 [00:00<00:00, 1100.12it/s]Loading weights:  64%|██████▎   | 301/473 [00:00<00:00, 1568.43it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 1873.50it/s]
+Loading adapter dari ./adapters/coding_core_v1 ...
+
+[PASS] (generate) Bikinin script javascript buat scraping website.
+    stage1 -> category='generate'   raw1='{"category": "generate"}'
+    stage2 -> action='generate' params={'language': 'javascript', 'requirements': 'scraping website'}   raw2='{"parameters": {"language": "javascript", "requirements": "scraping website"}}'
+
+[PASS] (debug) Fix TypeError di file utils.py.
+    stage1 -> category='debug'   raw1='{"category": "debug"}'
+    stage2 -> action='debug' params={'error': 'TypeError', 'file': 'utils.py'}   raw2='{"parameters": {"error": "TypeError", "file": "utils.py"}}'
+
+[PASS] (debug) Cek kenapa error connection refused ini.
+    stage1 -> category='debug'   raw1='{"category": "debug"}'
+    stage2 -> action='debug' params={'error': 'connection refused'}   raw2='{"parameters": {"error": "connection refused"}}'
+
+[PASS] (modify) Tambahin fitur search di fungsi ini.
+    stage1 -> category='modify'   raw1='{"category": "modify"}'
+    stage2 -> action='modify' params={'requirements': 'tambahin fitur search'}   raw2='{"parameters": {"requirements": "tambahin fitur search"}}'
+
+[PASS] (review) Review kode yang aku tulis.
+    stage1 -> category='review'   raw1='{"category": "review"}'
+    stage2 -> (di-skip) action='review'
+
+[PASS] (explain) Jelasin cara kerja caching dengan Redis pakai go.
+    stage1 -> category='explain'   raw1='{"category": "explain"}'
+    stage2 -> action='explain' params={'language': 'go', 'requirements': 'caching dengan Redis'}   raw2='{"parameters": {"language": "go", "requirements": "caching dengan Redis"}}'
+
+[PASS] (refactor) Bersihin kode ini biar lebih maintainable.
+    stage1 -> category='refactor'   raw1='{"category": "refactor"}'
+    stage2 -> action='refactor' params={'requirements': 'biar lebih maintainable'}   raw2='{"parameters": {"requirements": "biar lebih maintainable"}}'
+
+[PASS] (architecture) Desain arsitektur buat sistem CDN buat static assets.
+    stage1 -> category='architecture'   raw1='{"category": "architecture"}'
+    stage2 -> action='design' params={'requirements': 'sistem CDN buat static assets'}   raw2='{"parameters": {"requirements": "sistem CDN buat static assets"}}'
+
+[PASS] (test) Bikinin unit test buat endpoint ini.
+    stage1 -> category='test'   raw1='{"category": "test"}'
+    stage2 -> (di-skip) action='test'
+
+[PASS] (ambiguous) Ini eror mulu.
+    stage1 -> category='ambiguous'   raw1='{"category": "ambiguous"}'
+    stage2 -> action='modify' params={}   raw2='{"action": "modify", "target": null, "parameters": {}}'
+
+[PASS] (negative) Ingetin aku bayar tagihan.
+    stage1 -> category='negative'   raw1='{"category": "negative"}'
+    stage2 -> (di-skip) action=None
+
+==================================================
+RINGKASAN: 11/11 PASS (100%)
+
+Per kategori:
+  generate         1/1
+  debug            2/2
+  modify           1/1
+  review           1/1
+  explain          1/1
+  refactor         1/1
+  architecture     1/1
+  test             1/1
+  ambiguous        1/1
+  negative         1/1

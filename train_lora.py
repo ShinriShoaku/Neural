@@ -42,6 +42,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
 )
+from transformers.models.qwen3_5.modeling_qwen3_5 import Qwen3_5ForConditionalGeneration
 from peft import LoraConfig, get_peft_model, TaskType
 
 from training_common import tokenize_example, PadCollator, save_versioned_adapter
@@ -93,9 +94,9 @@ def main() -> None:
     use_bf16 = (not args.no_bf16) and torch.cuda.is_available() and torch.cuda.is_bf16_supported()
     dtype = torch.bfloat16 if use_bf16 else (torch.float16 if torch.cuda.is_available() else torch.float32)
 
-    model = AutoModelForCausalLM.from_pretrained(
+    model = Qwen3_5ForConditionalGeneration.from_pretrained(
         args.base_model_dir,
-        torch_dtype=dtype,
+        dtype=dtype,
         trust_remote_code=True,
         device_map="auto" if torch.cuda.is_available() else None,
     )
