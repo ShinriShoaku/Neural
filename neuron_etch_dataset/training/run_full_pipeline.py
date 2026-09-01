@@ -70,6 +70,15 @@ from generate_persona_full import ACTION_TO_INTENT as PERSONA_ACTION_TO_INTENT
 SPECIALIST_DOMAINS = ["system", "media", "persona", "coding", "information", "memory", "productivity"]
 
 
+class AdapterNotLoadedError(Exception):
+    """Dilempar kalau adapter yang mau dipakai belum/tidak lagi dimuat ke
+    model (misal habis di-unload lewat API server). Dipakai supaya server
+    bisa kasih respons rapi ("adapter X belum dimuat") alih-alih crash."""
+    def __init__(self, adapter_name: str):
+        self.adapter_name = adapter_name
+        super().__init__(f"Adapter {adapter_name!r} belum dimuat ke model.")
+
+
 # ===========================================================================
 # GENERATE & PARSE HELPER (dipakai semua adapter)
 # ===========================================================================
@@ -87,6 +96,9 @@ def get_stop_token_ids(tokenizer) -> list[int]:
 
 def generate(model, tokenizer, adapter_name: str, system_prompt: str, user_text: str,
              max_new_tokens: int = 120) -> str:
+    loaded = getattr(model, "peft_config", {})
+    if adapter_name not in loaded:
+        raise AdapterNotLoadedError(adapter_name)
     model.set_adapter(adapter_name)
     messages = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_text}]
     prompt_text = tokenizer.apply_chat_template(
@@ -383,7 +395,16 @@ def run_validator(model, tokenizer, original: str, task_ir: dict, max_new_tokens
 # ===========================================================================
 def run_full_pipeline(model, tokenizer, text: str, max_new_tokens: int = 120) -> dict:
     t0 = time.time()
-    segments = run_router(model, tokenizer, text, max_new_tokens)
+
+    if "router" not in getattr(model, "peft_config", {}):
+        return {"input": text, "segments": [], "elapsed_sec": 0.0,
+                "error": "Adapter 'router' belum dimuat -- pipeline tidak bisa jalan tanpa router."}
+
+    try:
+        segments = run_router(model, tokenizer, text, max_new_tokens)
+    except AdapterNotLoadedError as e:
+        return {"input": text, "segments": [], "elapsed_sec": round(time.time() - t0, 2),
+                "error": f"Router gagal jalan: {e}"}
 
     results = []
     for seg in segments:
@@ -395,16 +416,27 @@ def run_full_pipeline(model, tokenizer, text: str, max_new_tokens: int = 120) ->
         elif domain not in SPECIALIST_RUNNERS:
             entry["note"] = f"domain {domain!r} tidak dikenal sistem"
         else:
-            task_ir = SPECIALIST_RUNNERS[domain](model, tokenizer, seg_text, max_new_tokens)
+            try:
+                task_ir = SPECIALIST_RUNNERS[domain](model, tokenizer, seg_text, max_new_tokens)
+            except AdapterNotLoadedError as e:
+                entry["note"] = f"adapter specialist {domain!r} belum dimuat -- segment ini dilewati"
+                task_ir = None
+                results.append(entry)
+                continue
+
             if task_ir is None:
                 entry["note"] = "specialist bilang ini bukan command actionable (negative/ambiguous)"
             else:
                 entry["task_ir"] = task_ir
-                entry["validation"] = run_validator(model, tokenizer, seg_text, task_ir, max_new_tokens)
+                try:
+                    entry["validation"] = run_validator(model, tokenizer, seg_text, task_ir, max_new_tokens)
+                except AdapterNotLoadedError:
+                    entry["validation"] = None
+                    entry["note"] = "Task IR berhasil dibuat, tapi adapter validator belum dimuat (belum divalidasi)"
 
         results.append(entry)
 
-    return {"input": text, "segments": results, "elapsed_sec": round(time.time() - t0, 2)}
+    return {"input": text, "segments": results, "elapsed_sec": round(time.time() - t0, 2), "error": None}
 
 
 # ===========================================================================
@@ -414,6 +446,9 @@ def print_result(result: dict) -> None:
     print(f"\n{'=' * 70}")
     print(f"INPUT: {result['input']}")
     print(f"{'=' * 70}")
+    if result.get("error"):
+        print(f"\033[91mERROR: {result['error']}\033[0m")
+        return
     for i, seg in enumerate(result["segments"], 1):
         print(f"\n[Segment {i}] domain={seg['domain']!r}")
         print(f"  teks: {seg['text']!r}")
