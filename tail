@@ -1,0 +1,65 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading base model dari ./models/Qwen3.5-0.8B ...
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  20%|█▉        | 94/473 [00:00<00:00, 933.40it/s]Loading weights:  60%|█████▉    | 283/473 [00:00<00:00, 1477.00it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 1793.54it/s]
+Loading adapter dari ./adapters/validator_core_v1 ...
+
+[PASS] (valid) Buka spotify.
+    stage1 -> label='valid'   raw1='{"label": "valid"}'
+    stage2 -> (di-skip, label=valid)
+
+[PASS] (valid) Putar lagu Tulus.
+    stage1 -> label='valid'   raw1='{"label": "valid"}'
+    stage2 -> (di-skip, label=valid)
+
+[PASS] (domain_mismatch) Buka firefox.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='domain_mismatch'   raw2='{"reason": "domain_mismatch"}'
+
+[PASS] (contradiction) Matiin bluetooth.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='contradiction'   raw2='{"reason": "contradiction"}'
+
+[PASS] (target_mismatch) Cari lagu galau.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='target_mismatch'   raw2='{"reason": "target_mismatch"}'
+
+[FAIL] (missing_parameter) Debug NullPointerException di file main.py.
+    stage1 -> label='valid'   raw1='{"label": "valid"}'
+    stage2 -> (di-skip, label=valid)
+    - label salah: dapat 'valid', ekspektasi 'invalid'
+
+[PASS] (hallucinated_parameter) Tutup discord.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='hallucinated_parameter'   raw2='{"reason": "hallucinated_parameter"}'
+
+[PASS] (intent_mismatch) Tutup discord.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='intent_mismatch'   raw2='{"reason": "intent_mismatch"}'
+
+[FAIL] (unsupported_action) Set volume ke 50%.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='parameter_mismatch'   raw2='{"reason": "parameter_mismatch"}'
+    - reason salah: dapat 'parameter_mismatch', ekspektasi 'unsupported_action'
+
+[PASS] (parameter_mismatch) Buat script python buat validasi email.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='parameter_mismatch'   raw2='{"reason": "parameter_mismatch"}'
+
+[PASS] (ambiguous) Cek penggunaan RAM.
+    stage1 -> label='invalid'   raw1='{"label": "invalid"}'
+    stage2 -> reason='ambiguous'   raw2='{"reason": "ambiguous"}'
+
+==================================================
+RINGKASAN: 9/11 PASS (82%)
+
+Per kategori:
+  valid                    2/2
+  domain_mismatch          1/1
+  contradiction            1/1
+  target_mismatch          1/1
+  missing_parameter        0/1
+  hallucinated_parameter   1/1
+  intent_mismatch          1/1
+  unsupported_action       0/1
+  parameter_mismatch       1/1
+  ambiguous                1/1
